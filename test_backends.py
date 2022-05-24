@@ -167,7 +167,7 @@ else:
     hls_model.build(csim=False, synth=True, export=True)
 
     # Write header files with hardcoded data set
-    hls4ml.writer.vivado_accelerator_writer.VivadoAcceleratorWriter.write_header_file(X_test, y_test, y_keras, y_hls, 64, BOARD_NAME + '_axi_m_backend/sdk/common/data.h')
+    hls4ml.writer.vivado_accelerator_writer.VivadoAcceleratorWriter.write_header_file(hls_model, X_test, y_test, y_keras, y_hls, 64, BOARD_NAME + '_axi_m_backend/sdk/common/data.h')
 
     #
     hls4ml.report.read_vivado_report(BOARD_NAME + '_axi_m_backend/')
