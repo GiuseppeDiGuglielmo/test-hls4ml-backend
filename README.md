@@ -2,13 +2,17 @@
 
 This is a workspace for testing the integration of the Vivado Accelerator AXI-master backend and baremetal applications. It is a work-in-progress repository, but it should help us to converge on a PR for the official hls4ml repository.
 
-The _hls4ml_ fork and branch that we use in this workspace is ~https://github.com/GiuseppeDiGuglielmo/hls4ml/tree/gdg/axi-m~ https://github.com/hls4ml-finn-mlperftiny/hls4ml/tree/fifo_depth_opt
+The _hls4ml_ fork and branch that we use in this workspace is
+- ~https://github.com/GiuseppeDiGuglielmo/hls4ml/tree/gdg/axi-m~
+- ~https://github.com/hls4ml-finn-mlperftiny/hls4ml/tree/fifo_depth_opt~
+- https://github.com/fnal-fastml/hls4ml/tree/external-weights-vivado-accelerator
+
 ```
 conda env create -f environment.yml
 conda activate hls4ml-vivado-accelerator
 pip install qkeras==0.9.0
 pip uninstall hls4ml
-pip install git+https://github.com/hls4ml-finn-mlperftiny/hls4ml.git@fifo_depth_opt#egg=hls4ml[profiling]
+pip install git+https://github.com/fnal-fastml/hls4ml.git@external-weights-vivado-accelerator#egg=hls4ml[profiling]
 ```
 
 A few notes
@@ -26,7 +30,7 @@ make run-profile
 ## Run the Hardware/Software Flow
 ```
 make run
-cd sdk 
-make clean sdk gui
+#cd sdk 
+#make clean sdk gui
 ```
 At this point if you have a board locally connected you can run the software and bitstream directly from Vivado SDK.

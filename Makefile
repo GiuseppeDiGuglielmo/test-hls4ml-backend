@@ -6,11 +6,11 @@ help:
 
 run:
 	python $(SCRIPT_PY)
-.PHONY: run	
+.PHONY: run
 
 run-profile:
 	python $(SCRIPT_PY) profile
-.PHONY: run-profile	
+.PHONY: run-profile
 
 vivado-gui:
 	vivado ./test_axi_m_backend/myproject_vivado_accelerator/project_1.xpr
@@ -20,6 +20,7 @@ clean:
 	rm -rf training_dir
 	rm -rf __pycache__
 	rm -rf *axi_m_backend
+	rm -rf *qresource*
 	rm -f *axi_m_backend.tar.gz
 	rm -f *.npy
 	rm -f *.log
