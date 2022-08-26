@@ -13,7 +13,7 @@ run-profile:
 .PHONY: run-profile
 
 vivado-gui:
-	vivado ./test_axi_m_backend/myproject_vivado_accelerator/project_1.xpr
+	vivado ./wrapped_qresource64/myproject_vivado_accelerator/myproject.xpr
 .PHONY: vivado-gui
 
 clean:

@@ -30,7 +30,7 @@ make run-profile
 ## Run the Hardware/Software Flow
 ```
 make run
-#cd sdk 
-#make clean sdk gui
+cd sdk
+make clean sdk gui
 ```
 At this point if you have a board locally connected you can run the software and bitstream directly from Vivado SDK.
