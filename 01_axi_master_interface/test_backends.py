@@ -142,7 +142,7 @@ if len(sys.argv) == 2 and sys.argv[1] == 'profile':
     print('-----------------------------------')
 else:
 
-    results = hls_model.build(csim=False, synth=True, vsynth=False, export=False, bitfile=False)
+    results = hls_model.build(csim=False, synth=True, vsynth=False, export=True, bitfile=True)
 
     # Show reports
     # hls4ml.report.read_vivado_report(OUTPUT_DIR)
