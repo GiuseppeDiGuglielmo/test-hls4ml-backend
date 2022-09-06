@@ -94,20 +94,17 @@ for layer in config['LayerName']:
 # Get hls4ml model
 INTERFACE = 'axi_master'
 OUTPUT_DIR = '{}_qresource_rf{}'.format(INTERFACE, DEF_RF)
-hls_model =  hls4ml.converters.convert_from_keras_model(
-        model=model,
-        clock_period=CLOCK_PERIOD,
-        hls_config=config,
-        part=PART,
-        io_type='io_stream',
-        output_dir=OUTPUT_DIR,
-        # ---- #
-        backend='VivadoAccelerator',
-        interface=INTERFACE,
-        board=BOARD,
-        driver='python',
-        input_data_tb=DATA_DIR+'/X_test.npy',
-        output_data_tb=DATA_DIR+'/y_test.npy')
+hls_model = hls4ml.converters.convert_from_keras_model(
+   model=model,
+   clock_period=CLOCK_PERIOD,
+   hls_config=config,
+   part=PART,
+   io_type='io_stream',
+   output_dir=OUTPUT_DIR,
+   # ---- #
+   backend='VivadoAccelerator',
+   interface=INTERFACE,
+   board=BOARD)
 
 hls_model.compile()
 
@@ -125,3 +122,5 @@ results = hls_model.build(csim=False, synth=True, vsynth=False, export=True, bit
 
 # # Show reports
 # hls4ml.report.read_vivado_report(OUTPUT_DIR)
+
+#print_dict(results)
