@@ -37,13 +37,13 @@ def print_dict(d, indent=0):
 # PART = 'xc7z020clg400-1'
 # CLOCK_PERIOD = 10
 ##
-#BOARD = 'pynq-z2'
-#PART = 'xc7z020clg400-1'
-#CLOCK_PERIOD = 10
+BOARD = 'pynq-z2'
+PART = 'xc7z020clg400-1'
+CLOCK_PERIOD = 10
 ##
-BOARD = 'ultra96v2'
-PART = 'xczu3eg-sbva484-1-e'
-CLOCK_PERIOD = 5
+#BOARD = 'ultra96v2'
+#PART = 'xczu3eg-sbva484-1-e'
+#CLOCK_PERIOD = 5
 ##
 
 # Load dataset
@@ -62,6 +62,7 @@ model.summary()
 # Run model prediction
 y_keras = model.predict(X_test)
 np.save(DATA_DIR + '/y_keras.npy', y_keras)
+
 
 ## Save input and output images
 #IMG_DIR = 'jpg'
@@ -93,20 +94,28 @@ for layer in config['LayerName']:
 # Get hls4ml model
 INTERFACE = 'axi_master'
 OUTPUT_DIR = '{}_qresource_rf{}'.format(INTERFACE, DEF_RF)
-hls_model =  hls4ml.converters.convert_from_keras_model(
-        model=model,
-        clock_period=CLOCK_PERIOD,
-        hls_config=config,
-        part=PART,
-        io_type='io_stream',
-        output_dir=OUTPUT_DIR,
-        # ---- #
-        backend='VivadoAccelerator',
-        interface=INTERFACE,
-        board=BOARD,
-        driver='python',
-        input_data_tb=DATA_DIR+'/X_test.npy',
-        output_data_tb=DATA_DIR+'/y_test.npy')
+hls_model = hls4ml.converters.convert_from_keras_model(
+            model=model,
+            clock_period=CLOCK_PERIOD,
+            hls_config=config,
+            part=PART,
+            io_type='io_stream',
+            output_dir=OUTPUT_DIR)
+
+#hls_model =  hls4ml.converters.convert_from_keras_model(
+#        model=model,
+#        clock_period=CLOCK_PERIOD,
+#        hls_config=config,
+#        part=PART,
+#        io_type='io_stream',
+#        output_dir=OUTPUT_DIR,
+#        # ---- #
+#        backend='VivadoAccelerator',
+#        interface=INTERFACE,
+#        board=BOARD,
+#        driver='python',
+#        input_data_tb=DATA_DIR+'/X_test.npy',
+#        output_data_tb=DATA_DIR+'/y_test.npy')
 
 hls_model.compile()
 
