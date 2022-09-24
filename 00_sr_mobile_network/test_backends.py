@@ -15,6 +15,10 @@ from tensorflow.keras.utils import to_categorical
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
+# TODO: Do we need something like this?
+#sys.path.append('../')
+#import solvers.networks.base7
+
 os.environ['PATH'] = '/tools/Xilinx/Vivado/2019.1/bin:' + os.environ['PATH']
 
 gpu_devices = tf.config.experimental.list_physical_devices('GPU')
