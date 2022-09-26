@@ -1,10 +1,13 @@
 import os
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 import cv2
 import sys
 import hls4ml
 import tensorflow as tf
 import numpy as np
 
+sys.path.append('../')
+# import solvers.networks.base7
 from tensorflow import keras
 from tensorflow.keras.models import Model
 from sklearn.datasets import fetch_openml
@@ -60,7 +63,14 @@ model = tf.keras.models.load_model(MODEL_DIR)
 #model.summary()
 
 # DEBUG: remove later layers (Lambda)
-model = Model(model.input, model.layers[-6].output)
+# get the model before the first lambda skip connection (5 layer model)
+model_1 = Model(model.input, model.layers[-6].output)
+
+# get the last conv layer between the lambda layers (single layer model)
+model_2 = Model(model.layers[-4].input, model.layers[-4].output)
+
+# append the two models together (6 layer model)
+model = Model(model_1.input, model_2.layers[-1].output)
 model.summary()
 
 # Run model prediction
