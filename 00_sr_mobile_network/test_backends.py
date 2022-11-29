@@ -6,8 +6,6 @@ import hls4ml
 import tensorflow as tf
 import numpy as np
 
-sys.path.append('../')
-# import solvers.networks.base7
 from tensorflow import keras
 from tensorflow.keras.models import Model
 from sklearn.datasets import fetch_openml
@@ -15,9 +13,8 @@ from tensorflow.keras.utils import to_categorical
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
-# TODO: Do we need something like this?
-#sys.path.append('../')
-#import solvers.networks.base7
+sys.path.append('../')
+import solvers.networks.base7
 
 os.environ['PATH'] = '/tools/Xilinx/Vivado/2019.1/bin:' + os.environ['PATH']
 
